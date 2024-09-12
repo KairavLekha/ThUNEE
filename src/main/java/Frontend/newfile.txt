@@ -1,0 +1,43 @@
+//            char card = next.charAt(0);
+//            char suit = next.charAt(1);
+//            switch (card) {
+//                case 'J':
+//                    str += "Jack of ";
+//                    break;
+//                case 'K':
+//                    str += "King of ";
+//                    break;
+//                case 'Q':
+//                    str += "Queen of ";
+//                    break;
+//                case 'N':
+//                    str += "Nine of ";
+//                    break;
+//                case 'A':
+//                    str += "Ace of ";
+//                    break;
+//                case 'T':
+//                    str += "Ten of ";
+//                    break;
+//
+//            }
+//
+//            switch (suit) {
+//                case 'S':
+//                    str += "Spades";
+//                    break;
+//                case 'D':
+//                    str += "Diamonds";
+//                    break;
+//                case 'H':
+//                    str += "Hearts";
+//                    break;
+//                case 'C':
+//                    str += "Clovers";
+//                    break;
+//            }
+//
+//            str += "\n";
+//        }
+//
+//        System.out.println("Your cards are " + str);
