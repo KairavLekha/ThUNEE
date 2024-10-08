@@ -16,28 +16,32 @@ import java.sql.SQLException;
  */
 public class DB {
 
-    //stores the connection and prepared statement
-    private static Connection conn;
-    private static PreparedStatement ps;
+    // Fields to store the database connection and prepared statement
+    private static Connection conn;             
+    private static PreparedStatement ps;       
 
-    //initialiss the Database connection
+    // Initializes the database connection Loads the JDBC driver and connects to the database
     public static void init() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
+        
         String connectionUrl = "jdbc:mysql://localhost:3306/thunee";
+        
         conn = DriverManager.getConnection(connectionUrl, "root", "KAIRAVcr7");
     }
 
-    //reads from the Database 
+    // Reads data from the database using the provided SQL query Returns: ResultSet - the result set containing the data retrieved by the query
     public static ResultSet read(String query) throws SQLException {
         ps = conn.prepareStatement(query);
-        ResultSet rs = ps.executeQuery();
-        return rs;
-    }
-// updates the database
-    public static void update(String query) throws SQLException {
-        ps = conn.prepareStatement(query);
-        ps.executeUpdate();
+        ResultSet rs = ps.executeQuery();  
+        return rs;  
     }
 
-   
+    // Updates the database using the provided SQL query
+    public static void update(String query) throws SQLException {
+        ps = conn.prepareStatement(query);
+        ps.executeUpdate();  
+        ps.close();  
+    }
+
 }
+

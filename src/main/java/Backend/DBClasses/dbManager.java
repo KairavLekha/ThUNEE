@@ -13,77 +13,107 @@ import javax.swing.table.DefaultTableModel;
  * @author Kairav
  */
 public class dbManager {
-    //gets the stats of the player  from the Database 
 
-    public static DefaultTableModel fetchTable(String order,String stat,String Username) throws SQLException {
-        ResultSet rs = DB.read("SELECT username,numGames,numWins,numLosses,successRate,totalHands,handsWon,totalPoints FROM thunee.players WHERE username LIKE '"+Username+"%' order by "+stat+" " + order + ";");
-        String[] columnNames = {"Username", "Games Played", "Wins", "Losses", "Success Rate", "Hands", "Hands Won", "Total Points"};
+    // Retrieves and sorts the player statistics from the database and returns them in a table model
+    public static DefaultTableModel fetchTable(String order, String sortingStatistic, String Username) throws SQLException {
+        ResultSet rs = DB.read("SELECT username,numGames,numWins,numLosses,totalHands,handsWon,totalPoints FROM thunee.tblplayers WHERE username LIKE '" + Username + "%' order by " + sortingStatistic + " " + order + ";");
 
-        // Create a DefaultTableModel object
+        String[] columnNames = {"Username", "Games Played", "Wins", "Losses", "Hands", "Hands Won", "Total Points"};
+
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
-        // Looks through the result set and populate the table model
+        // Loop through the result set and populate the table model
         while (rs.next()) {
-            // Retrieve the data from the ResultSet
             String username = rs.getString("username");
             int numGames = rs.getInt("numGames");
             int numWins = rs.getInt("numWins");
             int numLosses = rs.getInt("numLosses");
-            String successRate = rs.getDouble("successRate") + " %";
             int tHands = rs.getInt("totalHands");
             int wHands = rs.getInt("handsWon");
             int tPoints = rs.getInt("totalPoints");
-            // Add the row to the table model
-            Object[] row = {username, numGames, numWins, numLosses, successRate, tHands, wHands, tPoints};
+
+            Object[] row = {username, numGames, numWins, numLosses, tHands, wHands, tPoints};
             tableModel.addRow(row);
         }
+
         return tableModel;
     }
 
-    //checks if the user exists
+// Gets all usernames from the database
+    public static String[] getAllUsers() throws SQLException {
+        // SQL query to fetch users from the database 
+        ResultSet rs = DB.read("SELECT username FROM thunee.tblplayers ORDER BY username;");
+
+        String[] users = new String[999];
+        int size = 0;
+
+        // Loop through the result set and extract usernames
+        while (rs.next()) {
+            users[size] = rs.getString("username");
+            size++;
+        }
+
+        // Return the array of usernames
+        return users;
+    }
+
+    // Checks if a user exists in the database by their username Returns: boolean if the user exists
     public static boolean isUser(String Username) throws SQLException {
-        boolean exists = false;
-        ResultSet rs = DB.read("SELECT COUNT(*) FROM thunee.players WHERE username LIKE '" + Username + "';");
+        boolean userExists = false;
+
+        ResultSet rs = DB.read("SELECT COUNT(*) FROM thunee.tblplayers WHERE username LIKE '" + Username + "';");
+
         if (rs.next()) {
-            int count = rs.getInt(1);  // Get the count result
+            int count = rs.getInt(1);
             if (count > 0) {
-                exists=true;
+                userExists = true;
             }
         }
-        return exists;
+
+        return userExists;
     }
-    
-    //checks if the user exists and is valid (has the corrcect password)
-    public static boolean validUser(String Username, String Password) throws SQLException {
-        boolean valid = false;
-        ResultSet rs = DB.read("SELECT COUNT(*) FROM thunee.players WHERE username LIKE '" + Username + "' AND password LIKE '" + Password + "';");
+
+    // Validates if a user exists and the password is correcect Returns: boolean if users exists and is valid
+    public static boolean isvalidUser(String Username, String Password) throws SQLException {
+        boolean userIsValid = false;
+
+        ResultSet rs = DB.read("SELECT COUNT(*) FROM thunee.tblplayers WHERE username LIKE '" + Username + "' AND password LIKE '" + Password + "';");
+
         if (rs.next()) {
-            int count = rs.getInt(1);  // Get the count result
+            int count = rs.getInt(1);
             if (count > 0) {
-                valid=true;
+                userIsValid = true;
             }
         }
-        return valid;
+
+        return userIsValid;
     }
-    
-    
-    //updates a performance statistic (numerical)
-    public static void updatePerfromanceStat(String statistic,String user,int changeInStat) throws SQLException{
-        DB.update("UPDATE thunee.players SET "+statistic+" ="+statistic+"+"+changeInStat+" WHERE (username LIKE '"+user+"');");
+
+    // Updates a numerical performance statistic for a user in the database
+    public static void updatePerfromanceStat(String statistic, String user, int changeInStat) throws SQLException {
+        DB.update("UPDATE thunee.tblplayers SET " + statistic + " =" + statistic + "+" + changeInStat + " WHERE (username LIKE '" + user + "');");
     }
-    //updates user information (text)
-    public static void updateUserInfo(String statistic,String user,String info) throws SQLException{
-        DB.update("UPDATE thunee.players SET "+statistic+" =\""+info+"\" WHERE (username LIKE '"+user+"');");
+
+    // Updates a user's information (username, password, name) in the database Returns: boolean if the update was successful
+    public static boolean updateUserInfo(String user, String pWord, String name, String newUser) throws SQLException {
+        boolean updateSuccessful = false;
+
+        if (isUser(newUser)) {
+            DB.update("UPDATE thunee.tblplayers SET username = \"" + newUser + "\", passowrd = \"" + pWord + "\",name = \"" + name + "\" WHERE (username LIKE '" + user + "');");
+            updateSuccessful = true;
+        }
+
+        return updateSuccessful;
     }
-    
-    //creates a new user
-    public static void createUser (String inName,String inPass,String inUser) throws SQLException{
-        DB.update("INSERT INTO thunee.players (name, password, username, numGames, numWins, numLosses, successRate, totalHands, handsWon, totalPoints) VALUES ("+inName+","+inPass+","+inUser+", 0, 0, 0, 0, 0, 0, 0);");
+
+    // Creates a new user in the database
+    public static void createUser(String inName, String inPass, String inUser) throws SQLException {
+        DB.update("INSERT INTO thunee.tblplayers (name, password, username, numGames, numWins, numLosses, totalHands, handsWon, totalPoints) VALUES (" + inName + "," + inPass + "," + inUser + ", 0, 0, 0, 0, 0, 0, 0);");
     }
-    
-    //returns the user information
-    public static ResultSet getUserInfo(String Username) throws SQLException{
-        ResultSet rs = DB.read("SELECT * FROM thunee.players WHERE username LIKE '"+Username+"';");
+
+    // Retrieves user information from the database based on the username and returns the data in a result sel
+    public static ResultSet getUserInfo(String Username) throws SQLException {
+        ResultSet rs = DB.read("SELECT * FROM thunee.tblplayers WHERE username LIKE '" + Username + "' LIMIT 1;");
         return rs;
     }
 }

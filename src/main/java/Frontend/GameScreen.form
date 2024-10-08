@@ -6,6 +6,7 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="0" green="0" red="0" type="rgb"/>
     </Property>
+    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -32,20 +33,20 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelP4" min="-2" max="-2" attributes="0"/>
-                          <Component id="P4Card1" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="p4Card1" min="-2" pref="161" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="P1Card1" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="p1Card1" min="-2" pref="114" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="P1Card2" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="p1Card2" min="-2" pref="114" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="P1Card3" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="p1Card3" min="-2" pref="114" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="P1Card4" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="p1Card4" min="-2" pref="114" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="P1Card5" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="p1Card5" min="-2" pref="114" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                      <Component id="P1Card6" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="p1Card6" min="-2" pref="114" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
@@ -53,22 +54,22 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="P2Card6" min="-2" max="-2" attributes="0"/>
+                              <Component id="p2Card6" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="P4Card5" min="-2" max="-2" attributes="0"/>
+                          <Component id="p4Card5" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="P4Card7" max="32767" attributes="0"/>
-                                  <Component id="P4Card4" max="32767" attributes="0"/>
-                                  <Component id="P4Card2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="p4Card3" max="32767" attributes="0"/>
+                                  <Component id="p4Card4" max="32767" attributes="0"/>
+                                  <Component id="p4Card2" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="P4Card6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="p4Card6" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -87,7 +88,7 @@
                                       <Component id="P2Played" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="P3Card1" min="-2" pref="114" max="-2" attributes="0"/>
+                                      <Component id="p3Card1" min="-2" pref="114" max="-2" attributes="0"/>
                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                       <Component id="P3Card2" min="-2" pref="114" max="-2" attributes="0"/>
                                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -102,11 +103,11 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="P2Card5" min="-2" max="-2" attributes="0"/>
-                                  <Component id="P2Card4" min="-2" max="-2" attributes="0"/>
-                                  <Component id="P2Card3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="P2Card2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="P2Card1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="p2Card5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="p2Card4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="p2Card3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="p2Card2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="p2Card1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -118,38 +119,70 @@
                       <Component id="RulesjButton" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="trumpCardjLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="trumpCardIcon" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="t1BallsjLabel" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="t2BallsjLabel" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jLabelTeam1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelTeam2" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabelTeam1Balls" max="32767" attributes="0"/>
+                          <Component id="jLabelTeam2Balls" pref="34" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelP1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="RulesjButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="P1Card1" min="-2" max="-2" attributes="0"/>
-                  <Component id="P1Card2" min="-2" max="-2" attributes="0"/>
-                  <Component id="P1Card3" min="-2" max="-2" attributes="0"/>
-                  <Component id="P1Card4" min="-2" max="-2" attributes="0"/>
-                  <Component id="P1Card5" min="-2" max="-2" attributes="0"/>
-                  <Component id="P1Card6" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                      <Component id="trumpCardjLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="trumpCardIcon" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelP1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RulesjButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="p1Card1" min="-2" max="-2" attributes="0"/>
+                          <Component id="p1Card2" min="-2" max="-2" attributes="0"/>
+                          <Component id="p1Card3" min="-2" max="-2" attributes="0"/>
+                          <Component id="p1Card4" min="-2" max="-2" attributes="0"/>
+                          <Component id="p1Card5" min="-2" max="-2" attributes="0"/>
+                          <Component id="p1Card6" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jLabelP4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P4Card1" min="-2" pref="114" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelP2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P2Card6" min="-2" pref="114" max="-2" attributes="0"/>
+                              <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabelP4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="p4Card1" min="-2" pref="114" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabelP2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="p2Card6" min="-2" pref="114" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -159,32 +192,50 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="P4Card2" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="p4Card2" min="-2" pref="114" max="-2" attributes="0"/>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P4Card7" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="p4Card3" min="-2" pref="114" max="-2" attributes="0"/>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P4Card4" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="p4Card4" min="-2" pref="114" max="-2" attributes="0"/>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P4Card5" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="p4Card5" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="P2Card5" min="-2" pref="114" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="p2Card5" min="-2" pref="114" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabelTeam1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelTeam1Balls" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabelTeam2" max="32767" attributes="0"/>
+                                          <Component id="jLabelTeam2Balls" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="t1BallsjLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="t2BallsjLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Component id="p2Card4" min="-2" pref="114" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Component id="p2Card3" min="-2" pref="114" max="-2" attributes="0"/>
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P2Card4" min="-2" pref="114" max="-2" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P2Card3" min="-2" pref="114" max="-2" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P2Card2" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="p2Card2" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Component id="P4Card6" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="p4Card6" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="P2Card1" min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="p2Card1" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -205,9 +256,11 @@
                               <Component id="P2Played" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Component id="jLabelP3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="P3Card1" min="-2" max="-2" attributes="0"/>
+                          <Component id="p3Card1" min="-2" max="-2" attributes="0"/>
                           <Component id="P3Card2" min="-2" max="-2" attributes="0"/>
                           <Component id="P3Card3" min="-2" max="-2" attributes="0"/>
                           <Component id="P3Card4" min="-2" max="-2" attributes="0"/>
@@ -216,179 +269,180 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabelP3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="P1Card1">
+    <Component class="javax.swing.JLabel" name="p1Card1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P1Card3">
+    <Component class="javax.swing.JLabel" name="p1Card3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P1Card2">
+    <Component class="javax.swing.JLabel" name="p1Card2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P1Card6">
+    <Component class="javax.swing.JLabel" name="p1Card6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P1Card5">
+    <Component class="javax.swing.JLabel" name="p1Card5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P1Card4">
+    <Component class="javax.swing.JLabel" name="p1Card4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P3Card3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P3Card2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P3Card6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P3Card5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P3Card4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P3Card1">
+    <Component class="javax.swing.JLabel" name="p3Card1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P4Card1">
+    <Component class="javax.swing.JLabel" name="p4Card1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P2Played">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
+        </Property>
+        <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P4Card6">
+    <Component class="javax.swing.JLabel" name="p4Card6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P4Card5">
+    <Component class="javax.swing.JLabel" name="p4Card5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P4Card4">
+    <Component class="javax.swing.JLabel" name="p4Card4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P4Card2">
+    <Component class="javax.swing.JLabel" name="p4Card2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P2Card1">
+    <Component class="javax.swing.JLabel" name="p2Card1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P2Card3">
+    <Component class="javax.swing.JLabel" name="p2Card3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P2Card5">
+    <Component class="javax.swing.JLabel" name="p2Card5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P2Card6">
+    <Component class="javax.swing.JLabel" name="p2Card6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P2Card4">
+    <Component class="javax.swing.JLabel" name="p2Card4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P2Card2">
+    <Component class="javax.swing.JLabel" name="p2Card2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
@@ -439,28 +493,37 @@
     <Component class="javax.swing.JLabel" name="P1Played">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
+        </Property>
+        <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P3Played">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\V\Back.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
+        </Property>
+        <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="P4Card7">
+    <Component class="javax.swing.JLabel" name="p4Card3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="P4Played">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\H\BackH.png"/>
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
+        </Property>
+        <Property name="disabledIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\BackH.png"/>
         </Property>
       </Properties>
     </Component>
@@ -474,6 +537,51 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RulesjButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="trumpCardjLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Trump Card"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="trumpCardIcon">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\Kairav\OneDrive\Documents\NetBeansProjects\ThuneeBasic\Cards\Back.png"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="t1BallsjLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="t2BallsjLabel">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTeam1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Team 1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTeam2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Team 2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTeam1Balls">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTeam2Balls">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

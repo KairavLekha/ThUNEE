@@ -21,13 +21,13 @@ public class AccountScreen extends javax.swing.JFrame {
     /**
      * Creates new form AccountScreen
      */
-    
     public String user;
+
     public AccountScreen(String inUser) {
         initComponents();
-        this.user=inUser;
+        this.user = inUser;
         setLocationRelativeTo(null);
-        setStats(user);
+        setUserStatsAndInfo(user);
     }
 
     /**
@@ -54,7 +54,6 @@ public class AccountScreen extends javax.swing.JFrame {
         TitlejLabelStats = new javax.swing.JLabel();
         gamesWonLabel = new javax.swing.JLabel();
         gamesLostLabel = new javax.swing.JLabel();
-        successRateLabel = new javax.swing.JLabel();
         handsPlayedLabel = new javax.swing.JLabel();
         pointsLabel = new javax.swing.JLabel();
         handsWonLabel = new javax.swing.JLabel();
@@ -63,12 +62,12 @@ public class AccountScreen extends javax.swing.JFrame {
         gamesPlayed = new javax.swing.JLabel();
         gamesWon = new javax.swing.JLabel();
         gamesLost = new javax.swing.JLabel();
-        successRate = new javax.swing.JLabel();
         handsPlayed = new javax.swing.JLabel();
         pointsWon = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -168,9 +167,6 @@ public class AccountScreen extends javax.swing.JFrame {
         gamesLostLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         gamesLostLabel.setText("Games Lost");
 
-        successRateLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        successRateLabel.setText("Success Rate");
-
         handsPlayedLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         handsPlayedLabel.setText("Hands Played");
 
@@ -194,9 +190,6 @@ public class AccountScreen extends javax.swing.JFrame {
 
         gamesLost.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         gamesLost.setText(" ");
-
-        successRate.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        successRate.setText(" ");
 
         handsPlayed.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         handsPlayed.setText(" ");
@@ -222,7 +215,6 @@ public class AccountScreen extends javax.swing.JFrame {
                     .addComponent(gamesWonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gamesPlayedLabel)
                     .addComponent(gamesLostLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(successRateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(handsPlayedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(pointsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,7 +224,6 @@ public class AccountScreen extends javax.swing.JFrame {
                     .addComponent(handsWon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gamesWon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gamesLost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(successRate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(handsPlayed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pointsWon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gamesPlayed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -258,23 +249,22 @@ public class AccountScreen extends javax.swing.JFrame {
                             .addComponent(gamesPlayedLabel)
                             .addComponent(gamesPlayed))
                         .addGap(38, 38, 38)
-                        .addComponent(gamesLostLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(successRateLabel)
-                            .addComponent(successRate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(handsPlayedLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(handsWonLabel))
+                        .addComponent(gamesLostLabel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(gamesWon)
                             .addComponent(gamesWonLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gamesLost)
-                        .addGap(44, 44, 44)
+                        .addComponent(gamesLost)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(handsPlayedLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(handsWonLabel))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addComponent(handsPlayed)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(handsWon)
@@ -282,7 +272,7 @@ public class AccountScreen extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pointsWon)
                             .addComponent(pointsLabel))))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -291,9 +281,9 @@ public class AccountScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,11 +294,13 @@ public class AccountScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //gets the new user data and updates the database
     private void updateJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateJButtonActionPerformed
         try {
-            dbManager.updateUserInfo("name", user,fName.getText()+" "+lName.getText() );
-            dbManager.updateUserInfo("password", user,pWord.getText());
-            dbManager.updateUserInfo("username", user,uName.getText());
+            if (!dbManager.updateUserInfo(user,pWord.getText(), fName.getText() + " " + lName.getText(),uName.getText())) {
+                JOptionPane.showMessageDialog(rootPane, "That username is already taken");
+                uName.setText("");
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
         }
@@ -322,7 +314,6 @@ public class AccountScreen extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TitlejLabelPlayerInfo;
@@ -348,26 +339,23 @@ public class AccountScreen extends javax.swing.JFrame {
     private javax.swing.JLabel pWordLabel;
     private javax.swing.JLabel pointsLabel;
     private javax.swing.JLabel pointsWon;
-    private javax.swing.JLabel successRate;
-    private javax.swing.JLabel successRateLabel;
     private javax.swing.JTextField uName;
     private javax.swing.JLabel uNameLabel;
     private javax.swing.JButton updateJButton;
     // End of variables declaration//GEN-END:variables
 
-    public void setStats(String username) {
+    public void setUserStatsAndInfo(String username) {
         try {
             ResultSet rs = dbManager.getUserInfo(username);
             while (rs.next()) {
                 String fullName = rs.getString("name");
                 fName.setText(fullName.substring(0, fullName.indexOf(" ")));
-               lName.setText(fullName.substring(fullName.indexOf(" ") + 1));
-               uName.setText(username);
+                lName.setText(fullName.substring(fullName.indexOf(" ") + 1));
+                uName.setText(username);
                 pWord.setText(rs.getString("password"));
                 gamesPlayed.setText(rs.getInt("numGames") + "");
                 gamesWon.setText(rs.getInt("numWins") + "");
                 gamesLost.setText(rs.getInt("numLosses") + "");
-                successRate.setText(rs.getDouble("successRate") + " %");
                 handsPlayed.setText(rs.getInt("totalHands") + "");
                 handsWon.setText(rs.getInt("handsWon") + "");
                 pointsWon.setText(rs.getInt("totalPoints") + "");

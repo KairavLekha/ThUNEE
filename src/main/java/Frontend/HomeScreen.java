@@ -6,7 +6,11 @@ package Frontend;
 
 import Backend.DBClasses.DB;
 import Backend.DBClasses.dbManager;
+import Backend.Gameplay.Game;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,11 +27,14 @@ public class HomeScreen extends javax.swing.JFrame {
 
     public HomeScreen() throws SQLException, ClassNotFoundException {
         initComponents();
+        ImageIcon pic = new ImageIcon("Cards\\logo.png");
+        this.setIconImage(pic.getImage());
         setLocationRelativeTo(null);
         statButton.setText("Username");
         //connexts to the database
         connect();
         //retrieves the players and displays it on the leaderboard in ascending order
+        populateComboBoxes();
         StatTable.setModel(dbManager.fetchTable(order, sortingStat, usernamejTextField.getText()));
     }
 
@@ -71,14 +78,22 @@ public class HomeScreen extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         orderButton = new javax.swing.JButton();
         statButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelSortBy = new javax.swing.JLabel();
         usernamejTextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelUsername = new javax.swing.JLabel();
         searchjButton = new javax.swing.JButton();
         GamePanel = new javax.swing.JPanel();
         GamejButton = new javax.swing.JButton();
         TitlejLabel = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
+        jLabelP1 = new javax.swing.JLabel();
+        jLabelP2 = new javax.swing.JLabel();
+        jLabelP3 = new javax.swing.JLabel();
+        jLabelP4 = new javax.swing.JLabel();
+        jComboBoxP1 = new javax.swing.JComboBox<>();
+        jComboBoxP2 = new javax.swing.JComboBox<>();
+        jComboBoxP3 = new javax.swing.JComboBox<>();
+        jComboBoxP4 = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,6 +109,7 @@ public class HomeScreen extends javax.swing.JFrame {
         jTextField5.setText("jTextField5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         LoginPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -274,19 +290,19 @@ public class HomeScreen extends javax.swing.JFrame {
         StatTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StatTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Username", "Games Played", "Wins", "Losses", "Success Rate", "Hands", "Hands Won", "Total Points"
+                "Username", "Games Played", "Wins", "Losses", "Hands", "Hands Won", "Total Points"
             }
         ));
         StatTable.setGridColor(new java.awt.Color(102, 102, 102));
@@ -313,13 +329,13 @@ public class HomeScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Sort By:");
+        jLabelSortBy.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabelSortBy.setText("Sort By:");
 
         usernamejTextField.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Username:");
+        jLabelUsername.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabelUsername.setText("Username:");
 
         searchjButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         searchjButton.setText("Search");
@@ -343,13 +359,13 @@ public class HomeScreen extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeaderboardPaneLayout.createSequentialGroup()
                         .addComponent(orderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelSortBy)
                         .addGap(43, 43, 43)
                         .addComponent(statButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(242, 242, 242))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(LeaderboardPaneLayout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(jLabelUsername)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(usernamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(80, 80, 80)
@@ -366,7 +382,7 @@ public class HomeScreen extends javax.swing.JFrame {
                 .addComponent(Title)
                 .addGap(39, 39, 39)
                 .addGroup(LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabelUsername)
                     .addComponent(usernamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchjButton))
                 .addGap(18, 18, 18)
@@ -375,7 +391,7 @@ public class HomeScreen extends javax.swing.JFrame {
                 .addGroup(LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(orderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(statButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabelSortBy))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
@@ -392,7 +408,27 @@ public class HomeScreen extends javax.swing.JFrame {
         TitlejLabel.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         TitlejLabel.setText("ThUNEE");
 
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Kairav\\OneDrive\\Documents\\NetBeansProjects\\ThuneeBasic\\Cards\\V\\logo.png")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Kairav\\OneDrive\\Documents\\NetBeansProjects\\ThuneeBasic\\Cards\\logo.png")); // NOI18N
+
+        jLabelP1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabelP1.setText("Player 1");
+
+        jLabelP2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabelP2.setText("Player 2");
+
+        jLabelP3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabelP3.setText("Player 3");
+
+        jLabelP4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabelP4.setText("Player 4");
+
+        jComboBoxP1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "***" }));
+
+        jComboBoxP2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "***" }));
+
+        jComboBoxP3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "***" }));
+
+        jComboBoxP4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "***" }));
 
         javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
         GamePanel.setLayout(GamePanelLayout);
@@ -407,8 +443,21 @@ public class HomeScreen extends javax.swing.JFrame {
                         .addGap(414, 414, 414)
                         .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TitlejLabel)
-                            .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(436, Short.MAX_VALUE))
+                            .addGroup(GamePanelLayout.createSequentialGroup()
+                                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(98, 98, 98)
+                                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabelP1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelP2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelP3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelP4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxP1, 0, 100, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxP2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxP3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxP4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         GamePanelLayout.setVerticalGroup(
             GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,7 +465,24 @@ public class HomeScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(TitlejLabel)
                 .addGap(18, 18, 18)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(GamePanelLayout.createSequentialGroup()
+                        .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelP1)
+                            .addComponent(jComboBoxP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelP2)
+                            .addComponent(jComboBoxP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelP3)
+                            .addComponent(jComboBoxP3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelP4)
+                            .addComponent(jComboBoxP4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(GamejButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
@@ -448,8 +514,8 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
         //checks the current order the leaderboard is being sorted in and changes it to the opposite order
-        changeOrder();
         try {
+            changeOrder();
             StatTable.setModel(dbManager.fetchTable(order, sortingStat, usernamejTextField.getText()));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
@@ -463,15 +529,13 @@ public class HomeScreen extends javax.swing.JFrame {
         String pass = passwordjTextFieldSignUp.getText();
         String user = uNamejTextFieldSignUp.getText();
         try {
-            if (dbManager.isUser(user)) {
-                JOptionPane.showMessageDialog(rootPane, "This username is already taken");
-                fNameTextField.setText("");
-                sNamejTextField.setText("");
-                passwordjTextFieldSignUp.setText("");
+            if (dbManager.isUser(user) || user.contains("*")) {
+                JOptionPane.showMessageDialog(rootPane, "This username is already taken or contains an invalid character");
                 uNamejTextFieldSignUp.setText("");
+            } else {
+                dbManager.createUser(name, pass, user);
+                showAccountScreen(user);
             }
-            dbManager.createUser(name, pass, user);
-            showAccountScreen(user);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
         }
@@ -483,7 +547,7 @@ public class HomeScreen extends javax.swing.JFrame {
         String pass = passwordjTextField1.getText();
         String user = uNamejTextField1.getText();
         try {
-            if (dbManager.validUser(user, pass)) {
+            if (dbManager.isvalidUser(user, pass)) {
                 showAccountScreen(user);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "This username and/or password is incorrect");
@@ -498,12 +562,51 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void GamejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GamejButtonActionPerformed
         // TODO add your handling code here:
+        String p1 = jComboBoxP1.getSelectedItem().toString();
+        String p2 = jComboBoxP2.getSelectedItem().toString();
+        String p3 = jComboBoxP3.getSelectedItem().toString();
+        String p4 = jComboBoxP4.getSelectedItem().toString();
+        if (!(p1.contains("*") || p2.contains("*") || p3.contains("*") || p4.contains("*")
+                || p1.equals(p2) || p1.equals(p3) || p1.equals(p4)
+                || p2.equals(p3) || p2.equals(p4) || p3.equals(p4))) {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    try {
+                        try {
+                            Game g = new Game(p1, p2, p3, p4);
+                            new GameScreen(g).setVisible(true);
+                        } catch (ClassNotFoundException ex) {
+                            JOptionPane.showMessageDialog(null, "Couldn't find the DB driver");
+                        }
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Couldn't connect to the database");
+                    }
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Select four different players");
+        }
     }//GEN-LAST:event_GamejButtonActionPerformed
+
+    public void populateComboBoxes() {
+        try {
+            for (String user : dbManager.getAllUsers()) {
+                if (user != null) { // Ensure the username is not null
+                    jComboBoxP1.addItem(user);
+                    jComboBoxP2.addItem(user);
+                    jComboBoxP3.addItem(user);
+                    jComboBoxP4.addItem(user);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
+        }
+    }
 
     private void statButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statButtonActionPerformed
         // TODO add your handling code here:
-        changeStat();
         try {
+            changeStat();
             StatTable.setModel(dbManager.fetchTable(order, sortingStat, usernamejTextField.getText()));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
@@ -511,8 +614,8 @@ public class HomeScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_statButtonActionPerformed
 
     private void searchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchjButtonActionPerformed
-        String username = usernamejTextField.getText();
         try {
+            String username = usernamejTextField.getText();
             StatTable.setModel(dbManager.fetchTable(order, sortingStat, username));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
@@ -584,8 +687,16 @@ public class HomeScreen extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JTextField fNameTextField;
     private javax.swing.JLabel fNamejLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> jComboBoxP1;
+    private javax.swing.JComboBox<String> jComboBoxP2;
+    private javax.swing.JComboBox<String> jComboBoxP3;
+    private javax.swing.JComboBox<String> jComboBoxP4;
+    private javax.swing.JLabel jLabelP1;
+    private javax.swing.JLabel jLabelP2;
+    private javax.swing.JLabel jLabelP3;
+    private javax.swing.JLabel jLabelP4;
+    private javax.swing.JLabel jLabelSortBy;
+    private javax.swing.JLabel jLabelUsername;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField5;
@@ -629,9 +740,6 @@ public class HomeScreen extends javax.swing.JFrame {
             sortingStat = "numLosses";
             statButton.setText("Games Lost");
         } else if (sortingStat.equals("numLosses")) {
-            sortingStat = "successRate";
-            statButton.setText("Success Rate");
-        } else if (sortingStat.equals("successRate")) {
             sortingStat = "totalHands";
             statButton.setText("Hands Played");
         } else if (sortingStat.equals("totalHands")) {
@@ -664,3 +772,4 @@ public class HomeScreen extends javax.swing.JFrame {
         });
     }
 }
+
