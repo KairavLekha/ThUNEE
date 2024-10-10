@@ -210,16 +210,19 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="gamesWonLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
-                      <Component id="gamesPlayedLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="gamesLostLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
-                      <Component id="handsPlayedLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Component id="pointsLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
-                          <Component id="handsWonLabel" min="-2" pref="155" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="gamesWonLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
+                          <Component id="gamesPlayedLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="gamesLostLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
+                          <Component id="handsPlayedLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="pointsLabel" alignment="1" min="-2" pref="155" max="-2" attributes="0"/>
+                              <Component id="handsWonLabel" min="-2" pref="155" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                      <Component id="terminatedLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -229,6 +232,7 @@
                       <Component id="handsPlayed" max="32767" attributes="0"/>
                       <Component id="pointsWon" alignment="0" max="32767" attributes="0"/>
                       <Component id="gamesPlayed" alignment="0" max="32767" attributes="0"/>
+                      <Component id="terminated" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -287,9 +291,14 @@
                               <Component id="pointsWon" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="pointsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="terminated" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="terminatedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="190" max="32767" attributes="0"/>
+                  <EmptySpace pref="152" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -410,6 +419,22 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="terminated">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="24" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="terminatedLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="24" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Terminated Games"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

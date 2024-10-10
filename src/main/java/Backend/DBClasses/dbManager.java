@@ -16,9 +16,9 @@ public class dbManager {
 
     // Retrieves and sorts the player statistics from the database and returns them in a table model
     public static DefaultTableModel fetchTable(String order, String sortingStatistic, String Username) throws SQLException {
-        ResultSet rs = DB.read("SELECT username,numGames,numWins,numLosses,totalHands,handsWon,totalPoints FROM thunee.tblplayers WHERE username LIKE '" + Username + "%' order by " + sortingStatistic + " " + order + ";");
+        ResultSet rs = DB.read("SELECT username,numGames,numWins,numLosses,totalHands,handsWon,totalPoints,gamesTerminated FROM thunee.tblplayers WHERE username LIKE '" + Username + "%' ORDER BY " + sortingStatistic + " " + order + ";");
 
-        String[] columnNames = {"Username", "Games Played", "Wins", "Losses", "Hands", "Hands Won", "Total Points"};
+        String[] columnNames = {"Username", "Games Played", "Wins", "Losses", "Hands", "Hands Won", "Total Points","Games Terminated"};
 
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
@@ -31,8 +31,9 @@ public class dbManager {
             int tHands = rs.getInt("totalHands");
             int wHands = rs.getInt("handsWon");
             int tPoints = rs.getInt("totalPoints");
+            int gamesTerminated = rs.getInt("gamesTerminated");
 
-            Object[] row = {username, numGames, numWins, numLosses, tHands, wHands, tPoints};
+            Object[] row = {username, numGames, numWins, numLosses, tHands, wHands, tPoints,gamesTerminated};
             tableModel.addRow(row);
         }
 
@@ -108,7 +109,7 @@ public class dbManager {
 
     // Creates a new user in the database
     public static void createUser(String inName, String inPass, String inUser) throws SQLException {
-        DB.update("INSERT INTO thunee.tblplayers (name, password, username, numGames, numWins, numLosses, totalHands, handsWon, totalPoints) VALUES (" + inName + "," + inPass + "," + inUser + ", 0, 0, 0, 0, 0, 0, 0);");
+        DB.update("INSERT INTO thunee.tblplayers (name, password, username, numGames, numWins, numLosses, totalHands, handsWon, totalPoints, gamesTerminated) VALUES (\"" + inName + "\",\"" + inPass + "\",\"" + inUser + "\", 0, 0, 0, 0, 0, 0, 0);");
     }
 
     // Retrieves user information from the database based on the username and returns the data in a result sel

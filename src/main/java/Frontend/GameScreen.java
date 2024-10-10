@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author Kairav
  */
 public class GameScreen extends javax.swing.JFrame {
-
+    
     ArrayList<JLabel> p1Cards = new ArrayList<>();
     ArrayList<JLabel> p2Cards = new ArrayList<>();
     ArrayList<JLabel> p3Cards = new ArrayList<>();
@@ -36,16 +36,16 @@ public class GameScreen extends javax.swing.JFrame {
      * Creates new form GameScree
      */
     Game g;
-
+    
     public GameScreen(Game inGame) throws SQLException, ClassNotFoundException {
         initComponents();
         setLocationRelativeTo(null);
-
+        
         DB.init();
         createCardListsAndCardListHolders();
-        g=inGame;
+        g = inGame;
         setUserLabels(g);
-
+        
         showPlayerCards(g.getTrumpPlayer());
 
         //makes a mouse listener
@@ -68,7 +68,7 @@ public class GameScreen extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "You've already played this card chose a new card");
                     return;
                 }
-
+                
                 playCardAndDisplay(currentPlayerID, indexOfCard);
 
                 //checks if this is the first card in the round
@@ -83,7 +83,8 @@ public class GameScreen extends javax.swing.JFrame {
                     passPlay();
                     return;
                 }
-
+                
+                handValue.setText(g.determineHandPoints() + "");
                 //if round is not over
                 if (!g.isRoundOver()) {
                     try {
@@ -97,11 +98,10 @@ public class GameScreen extends javax.swing.JFrame {
                 determineRoundWinnerAndUpdatePointDisplay();
                 //if the game isn't over
                 if (!g.isGameOver()) {
-
+                    
                     try {
                         handOver();
                         trumpSet = false;
-                        System.out.println("new round");
                         g.newRound();
                         showPlayerCards(g.getTrumpPlayer());
                     } catch (SQLException ex) {
@@ -118,29 +118,28 @@ public class GameScreen extends javax.swing.JFrame {
                     }
                 }
             }
-
             
             @Override
             public void mouseReleased(MouseEvent e) {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-
+            
             @Override
             public void mouseEntered(MouseEvent e) {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-
+            
             @Override
             public void mouseExited(MouseEvent e) {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
-
+            
             @Override
             public void mousePressed(MouseEvent e) {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         };
-
+        
         addMouseListenersToButtons(l);
     }
 
@@ -185,7 +184,7 @@ public class GameScreen extends javax.swing.JFrame {
         P3Played = new javax.swing.JLabel();
         p4Card3 = new javax.swing.JLabel();
         P4Played = new javax.swing.JLabel();
-        RulesjButton = new javax.swing.JButton();
+        rulesjButton = new javax.swing.JButton();
         trumpCardjLabel = new javax.swing.JLabel();
         trumpCardIcon = new javax.swing.JLabel();
         t1BallsjLabel = new javax.swing.JLabel();
@@ -194,6 +193,9 @@ public class GameScreen extends javax.swing.JFrame {
         jLabelTeam2 = new javax.swing.JLabel();
         jLabelTeam1Balls = new javax.swing.JLabel();
         jLabelTeam2Balls = new javax.swing.JLabel();
+        terminateGameButton = new javax.swing.JButton();
+        handValue = new javax.swing.JLabel();
+        jLabelHandValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -275,11 +277,11 @@ public class GameScreen extends javax.swing.JFrame {
         P4Played.setIcon(new javax.swing.ImageIcon("C:\\Users\\Kairav\\OneDrive\\Documents\\NetBeansProjects\\ThuneeBasic\\Cards\\BackH.png")); // NOI18N
         P4Played.setDisabledIcon(new javax.swing.ImageIcon("C:\\Users\\Kairav\\OneDrive\\Documents\\NetBeansProjects\\ThuneeBasic\\Cards\\BackH.png")); // NOI18N
 
-        RulesjButton.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        RulesjButton.setText("Rules");
-        RulesjButton.addActionListener(new java.awt.event.ActionListener() {
+        rulesjButton.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        rulesjButton.setText("Rules");
+        rulesjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RulesjButtonActionPerformed(evt);
+                rulesjButtonActionPerformed(evt);
             }
         });
 
@@ -297,6 +299,20 @@ public class GameScreen extends javax.swing.JFrame {
         jLabelTeam1Balls.setText("0");
 
         jLabelTeam2Balls.setText("0");
+
+        terminateGameButton.setBackground(new java.awt.Color(255, 0, 0));
+        terminateGameButton.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        terminateGameButton.setText("X");
+        terminateGameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                terminateGameButtonActionPerformed(evt);
+            }
+        });
+
+        handValue.setText("0");
+
+        jLabelHandValue.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabelHandValue.setText("Last Hand Value:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,11 +362,17 @@ public class GameScreen extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(132, 132, 132)
                                         .addComponent(P4Played)
-                                        .addGap(6, 6, 6)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(P1Played, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(P3Played, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(6, 6, 6)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(P1Played, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(P3Played, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(6, 6, 6))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(terminateGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(29, 29, 29)))
                                         .addComponent(P2Played))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(p3Card1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -375,25 +397,31 @@ public class GameScreen extends javax.swing.JFrame {
                         .addGap(178, 178, 178)
                         .addComponent(jLabelP1)
                         .addGap(755, 755, 755)
-                        .addComponent(RulesjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(rulesjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(trumpCardjLabel)
                     .addComponent(trumpCardIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addComponent(jLabelHandValue)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(t1BallsjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(t2BallsjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(t1BallsjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(t2BallsjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(handValue, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabelTeam1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelTeam2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelTeam1Balls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelTeam2Balls, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))))
-                .addGap(0, 16, Short.MAX_VALUE))
+                            .addComponent(jLabelTeam2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                            .addComponent(jLabelTeam1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTeam2Balls, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelTeam1Balls, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,7 +435,7 @@ public class GameScreen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelP1)
-                            .addComponent(RulesjButton))
+                            .addComponent(rulesjButton))
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(p1Card1)
@@ -448,12 +476,16 @@ public class GameScreen extends javax.swing.JFrame {
                                             .addComponent(jLabelTeam1)
                                             .addComponent(jLabelTeam1Balls, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabelTeam2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabelTeam2)
                                             .addComponent(jLabelTeam2Balls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(t1BallsjLabel)
-                                        .addGap(31, 31, 31)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(t1BallsjLabel)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabelHandValue)
+                                                .addComponent(handValue, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(36, 36, 36)
                                         .addComponent(t2BallsjLabel)))
                                 .addGap(6, 6, 6)
                                 .addComponent(p2Card4, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -476,7 +508,9 @@ public class GameScreen extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(P1Played)
-                                .addGap(117, 117, 117)
+                                .addGap(32, 32, 32)
+                                .addComponent(terminateGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
                                 .addComponent(P3Played))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(170, 170, 170)
@@ -497,17 +531,26 @@ public class GameScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RulesjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RulesjButtonActionPerformed
+    private void rulesjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rulesjButtonActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(rootPane, "Cards and values: \nJack: 30 \nNine: 20 \nAce: 11 \nTen: 10 \nKing: 3 \nQueen: 2\n\nTrump: \nA player will pick a card from their hand and the suit of that card will be the trump suit.\nGameplay: \nIf you have a card the same suit as the first card played in the hand you have to play\n it or you can cheat and risk giving the opponents four balls.\nGameplay: \nThe player that played the card with the highest value of that suit will win the hand.\nGameplay: \nHowever if a player decides to play the trump card the player with the highest trump \nwill win regardless of whether it is the same suit as the first card in the round.");
 
-    }//GEN-LAST:event_RulesjButtonActionPerformed
+    }//GEN-LAST:event_rulesjButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
- 
-
+    private void terminateGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminateGameButtonActionPerformed
+        // TODO add your handling code here:
+        int terminate = JOptionPane.showConfirmDialog(rootPane, "Are you sure you wish to terminate the game");
+        if (terminate != 1) {
+            try {
+                g.terminateGame();
+                JOptionPane.showMessageDialog(null, "Game Terminated");
+                this.dispose();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Failed to connect to the DB");
+            }
+        }
+    }//GEN-LAST:event_terminateGameButtonActionPerformed
+    
     public void determineRoundWinnerAndUpdatePointDisplay() {
         int roundWinningTeam = g.deterimineRoundWinner();
         JOptionPane.showMessageDialog(rootPane, "Team " + roundWinningTeam + " has won this round");
@@ -517,14 +560,14 @@ public class GameScreen extends javax.swing.JFrame {
         jLabelTeam1Balls.setText(teamBalls[g.TEAM1] + " ");
         jLabelTeam2Balls.setText(teamBalls[g.TEAM2] + " ");
     }
-
+    
     public String setTrumpCard(int indexOfCard, JLabel selectedCard) {
         indexOfCard = playerCardHolder.get(g.getTrumpPlayer().getID()).indexOf(selectedCard);
         g.setTrumpCard(g.getTrumpPlayer().getCard(indexOfCard));
         trumpSet = true;
         return g.getTrumpCard().getIconCode();
     }
-
+    
     public Icon determineCardOrientation(int currentPlayerID, int indexOfCard) {
         Icon ic = null;
         if (currentPlayerID % 2 == 0) {
@@ -534,7 +577,7 @@ public class GameScreen extends javax.swing.JFrame {
         }
         return ic;
     }
-
+    
     public void blankPlayerCards() {
         for (int i = 0; i < 4; i++) {
             ArrayList<JLabel> list = p1Cards;
@@ -562,7 +605,7 @@ public class GameScreen extends javax.swing.JFrame {
             }
         }
     }
-
+    
     public void resetPlayedCards() {
         Icon ic = new ImageIcon("Cards\\Back.png");
         P1Played.setIcon(ic);
@@ -571,7 +614,7 @@ public class GameScreen extends javax.swing.JFrame {
         P2Played.setIcon(ic);
         P4Played.setIcon(ic);
     }
-
+    
     public void showPlayerCards(Player p) {
         ArrayList<JLabel> cardsToShow = null;
         String imgSuffix = "";
@@ -598,18 +641,18 @@ public class GameScreen extends javax.swing.JFrame {
             cardsToShow.get(i).setIcon(new ImageIcon("Cards\\" + playerCards[i].getIconCode() + imgSuffix));
         }
     }
-
+    
     public void passPlay() {
         blankPlayerCards();
         JOptionPane.showMessageDialog(rootPane, "Pass to the next player");
         showPlayerCards(g.getCurrentPlayer());
     }
-
+    
     public void playCardAndDisplay(int currentPlayerID, int indexOfCard) {
         playedCards.get(currentPlayerID).setIcon(determineCardOrientation(currentPlayerID, indexOfCard));
         g.playCard(g.getCurrentPlayer(), g.getCurrentPlayer().playCard(indexOfCard));
     }
-
+    
     public void createCardListsAndCardListHolders() {
         p1Cards.add(p1Card1);
         p1Cards.add(p1Card2);
@@ -617,39 +660,39 @@ public class GameScreen extends javax.swing.JFrame {
         p1Cards.add(p1Card4);
         p1Cards.add(p1Card5);
         p1Cards.add(p1Card6);
-
+        
         p2Cards.add(p2Card1);
         p2Cards.add(p2Card2);
         p2Cards.add(p2Card3);
         p2Cards.add(p2Card4);
         p2Cards.add(p2Card5);
         p2Cards.add(p2Card6);
-
+        
         p3Cards.add(p3Card1);
         p3Cards.add(P3Card2);
         p3Cards.add(P3Card3);
         p3Cards.add(P3Card4);
         p3Cards.add(P3Card5);
         p3Cards.add(P3Card6);
-
+        
         p4Cards.add(p4Card1);
         p4Cards.add(p4Card2);
         p4Cards.add(p4Card3);
         p4Cards.add(p4Card4);
         p4Cards.add(p4Card5);
         p4Cards.add(p4Card6);
-
+        
         playedCards.add(P1Played);
         playedCards.add(P2Played);
         playedCards.add(P3Played);
         playedCards.add(P4Played);
-
+        
         playerCardHolder.add(p1Cards);
         playerCardHolder.add(p2Cards);
         playerCardHolder.add(p3Cards);
         playerCardHolder.add(p4Cards);
     }
-
+    
     public void addMouseListenersToButtons(MouseListener l) {
         //adds the mouse listener to the buttons
         for (JLabel p1Card : p1Cards) {
@@ -665,14 +708,14 @@ public class GameScreen extends javax.swing.JFrame {
             p4Card.addMouseListener(l);
         }
     }
-
+    
     public void handOver() throws SQLException {
         Player winner = g.determineHandWinner();
         JOptionPane.showMessageDialog(null, winner.getUsername() + " won this hand");
         resetPlayedCards();
         passPlay();
     }
-
+    
     public void setUserLabels(Game g) throws SQLException {
         switch (g.getTrumpPlayer().getID()) {
             case Player.PLAYER1:
@@ -711,7 +754,8 @@ public class GameScreen extends javax.swing.JFrame {
     private javax.swing.JLabel P3Card6;
     private javax.swing.JLabel P3Played;
     private javax.swing.JLabel P4Played;
-    private javax.swing.JButton RulesjButton;
+    private javax.swing.JLabel handValue;
+    private javax.swing.JLabel jLabelHandValue;
     private javax.swing.JLabel jLabelP1;
     private javax.swing.JLabel jLabelP2;
     private javax.swing.JLabel jLabelP3;
@@ -739,8 +783,10 @@ public class GameScreen extends javax.swing.JFrame {
     private javax.swing.JLabel p4Card4;
     private javax.swing.JLabel p4Card5;
     private javax.swing.JLabel p4Card6;
+    private javax.swing.JButton rulesjButton;
     private javax.swing.JLabel t1BallsjLabel;
     private javax.swing.JLabel t2BallsjLabel;
+    private javax.swing.JButton terminateGameButton;
     private javax.swing.JLabel trumpCardIcon;
     private javax.swing.JLabel trumpCardjLabel;
     // End of variables declaration//GEN-END:variables

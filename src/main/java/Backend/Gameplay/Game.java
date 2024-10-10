@@ -19,28 +19,28 @@ public class Game {
     public static final int TEAM1 = 1;
     public static final int TEAM2 = 2;
 
-    private Player[] players = new Player[4]; 
+    private Player[] players = new Player[4];
     private Deck deck = new Deck();
 
     // Hand-related variables
-    private Card[] currentHand = new Card[4]; 
-    private Player[] playersThatPlayed = new Player[4]; 
-    private Player initiatingPlayerOfRound; 
-    private Player currentPlayer; 
-    private int cardsPlayedInHand = 0; 
-    private int currentHandSuit = -1; 
+    private Card[] currentHand = new Card[4];
+    private Player[] playersThatPlayed = new Player[4];
+    private Player initiatingPlayerOfRound;
+    private Player currentPlayer;
+    private int cardsPlayedInHand = 0;
+    private int currentHandSuit = -1;
 
     // Round-related variables
-    private int handsPlayedInRound = 0; 
-        // Points for Team 1 in the current round
-    private int t1Points = 0; 
-        // Points for Team 2 in the current round
-    private int t2Points = 0; 
-    private Card trumpCard = null; 
+    private int handsPlayedInRound = 0;
+    // Points for Team 1 in the current round
+    private int t1Points = 0;
+    // Points for Team 2 in the current round
+    private int t2Points = 0;
+    private Card trumpCard = null;
 
     // Game-related variables
-        // Balls accumulated by Team 1
-    private int t1Balls = 0; 
+    // Balls accumulated by Team 1
+    private int t1Balls = 0;
     // Balls accumulated by Team 2
     private int t2Balls = 0;
 
@@ -48,7 +48,7 @@ public class Game {
     public Game(String p1, String p2, String p3, String p4) throws SQLException {
         // Team 1: Player 1 & Player 3
         this.players[Player.PLAYER1] = new Player(p1, Player.PLAYER1);
-        dbManager.updatePerfromanceStat("numGames", p1, 1); 
+        dbManager.updatePerfromanceStat("numGames", p1, 1);
         this.players[Player.PLAYER3] = new Player(p3, Player.PLAYER3);
         dbManager.updatePerfromanceStat("numGames", p3, 1);
 
@@ -60,6 +60,13 @@ public class Game {
 
         initiatingPlayerOfRound = players[Player.PLAYER1];
         newRound(); // Start the round
+    }
+
+    public void terminateGame() throws SQLException {
+        dbManager.updatePerfromanceStat("gamesTerminated", players[Player.PLAYER1].getUsername(), 1);
+        dbManager.updatePerfromanceStat("gamesTerminated", players[Player.PLAYER2].getUsername(), 1);
+        dbManager.updatePerfromanceStat("gamesTerminated", players[Player.PLAYER3].getUsername(), 1);
+        dbManager.updatePerfromanceStat("gamesTerminated", players[Player.PLAYER4].getUsername(), 1);
     }
 
     // Hand Management
@@ -86,14 +93,14 @@ public class Game {
         } else {
             indexOfCurrentPlayer++;
         }
-        currentPlayer = players[indexOfCurrentPlayer]; 
+        currentPlayer = players[indexOfCurrentPlayer];
     }
 
     // Plays a card from a player
     public void playCard(Player p, Card c) {
-        currentHand[cardsPlayedInHand] = c; 
-        playersThatPlayed[cardsPlayedInHand] = p; 
-        cardsPlayedInHand++; 
+        currentHand[cardsPlayedInHand] = c;
+        playersThatPlayed[cardsPlayedInHand] = p;
+        cardsPlayedInHand++;
     }
 
     // Determines the player taht won the current hand
