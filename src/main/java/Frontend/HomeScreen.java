@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author Kairav
  */
-public class HomeScreen extends javax.swing.JFrame {
+public final class HomeScreen extends javax.swing.JFrame {
 
     /**
      * Creates new form HomeScreen
@@ -48,6 +48,7 @@ public class HomeScreen extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTextField5 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         MainScreen = new javax.swing.JTabbedPane();
         HomePane = new javax.swing.JPanel();
         AccountPane = new javax.swing.JTabbedPane();
@@ -80,7 +81,7 @@ public class HomeScreen extends javax.swing.JFrame {
         usernamejTextField = new javax.swing.JTextField();
         jLabelUsername = new javax.swing.JLabel();
         refreshButton = new javax.swing.JButton();
-        searchjButton1 = new javax.swing.JButton();
+        searchjButton = new javax.swing.JButton();
         GamePanel = new javax.swing.JPanel();
         GamejButton = new javax.swing.JButton();
         TitlejLabel = new javax.swing.JLabel();
@@ -106,6 +107,8 @@ public class HomeScreen extends javax.swing.JFrame {
         );
 
         jTextField5.setText("jTextField5");
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -344,11 +347,11 @@ public class HomeScreen extends javax.swing.JFrame {
             }
         });
 
-        searchjButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        searchjButton1.setText("Search");
-        searchjButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchjButton.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        searchjButton.setText("Search");
+        searchjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchjButton1ActionPerformed(evt);
+                searchjButtonActionPerformed(evt);
             }
         });
 
@@ -376,15 +379,12 @@ public class HomeScreen extends javax.swing.JFrame {
                         .addComponent(jLabelUsername)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(usernamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(542, 542, 542))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(435, 435, 435))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeaderboardPaneLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(124, 124, 124))))
-            .addGroup(LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeaderboardPaneLayout.createSequentialGroup()
-                    .addContainerGap(601, Short.MAX_VALUE)
-                    .addComponent(searchjButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(351, 351, 351)))
         );
         LeaderboardPaneLayout.setVerticalGroup(
             LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,10 +393,11 @@ public class HomeScreen extends javax.swing.JFrame {
                 .addGroup(LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Title)
                     .addComponent(refreshButton))
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
                 .addGroup(LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUsername)
-                    .addComponent(usernamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchjButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -405,11 +406,6 @@ public class HomeScreen extends javax.swing.JFrame {
                     .addComponent(statButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSortBy))
                 .addContainerGap(88, Short.MAX_VALUE))
-            .addGroup(LeaderboardPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(LeaderboardPaneLayout.createSequentialGroup()
-                    .addGap(93, 93, 93)
-                    .addComponent(searchjButton1)
-                    .addContainerGap(355, Short.MAX_VALUE)))
         );
 
         MainScreen.addTab("Player Statistics", LeaderboardPane);
@@ -550,8 +546,8 @@ public class HomeScreen extends javax.swing.JFrame {
                 uNamejTextFieldSignUp.setText("");
             } else {
                 dbManager.createUser(name, pass, user);
-                showAccountScreen(user);
                 populateComboBoxes();
+                showAccountScreen(user);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
@@ -586,18 +582,16 @@ public class HomeScreen extends javax.swing.JFrame {
         if (!(p1.contains("*") || p2.contains("*") || p3.contains("*") || p4.contains("*")
                 || p1.equals(p2) || p1.equals(p3) || p1.equals(p4)
                 || p2.equals(p3) || p2.equals(p4) || p3.equals(p4))) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
+            java.awt.EventQueue.invokeLater(() -> {
+                try {
                     try {
-                        try {
-                            Game g = new Game(p1, p2, p3, p4);
-                            new GameScreen(g).setVisible(true);
-                        } catch (ClassNotFoundException ex) {
-                            JOptionPane.showMessageDialog(null, "Couldn't find the DB driver");
-                        }
-                    } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "Couldn't connect to the database");
+                        Game g = new Game(p1, p2, p3, p4);
+                        new GameScreen(g).setVisible(true);
+                    } catch (ClassNotFoundException ex) {
+                        JOptionPane.showMessageDialog(null, "Couldn't find the DB driver");
                     }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Couldn't connect to the database");
                 }
             });
         } else {
@@ -630,9 +624,15 @@ public class HomeScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void searchjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchjButton1ActionPerformed
+    private void searchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchjButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchjButton1ActionPerformed
+                try {
+            StatTable.setModel(dbManager.fetchTable(order, sortingStat, usernamejTextField.getText()));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
+
+        }
+    }//GEN-LAST:event_searchjButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -650,27 +650,21 @@ public class HomeScreen extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HomeScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new HomeScreen().setVisible(true);
-                } catch (ClassNotFoundException ex) {
-                    JOptionPane.showMessageDialog(null, "Could not find DB driver");
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(null, "Could not connect to the DB");
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new HomeScreen().setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Could not find DB driver");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Could not connect to the DB");
             }
         });
     }
@@ -694,6 +688,7 @@ public class HomeScreen extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JTextField fNameTextField;
     private javax.swing.JLabel fNamejLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxP1;
     private javax.swing.JComboBox<String> jComboBoxP2;
     private javax.swing.JComboBox<String> jComboBoxP3;
@@ -717,7 +712,7 @@ public class HomeScreen extends javax.swing.JFrame {
     private javax.swing.JButton refreshButton;
     private javax.swing.JLabel sNamejLabel;
     private javax.swing.JTextField sNamejTextField;
-    private javax.swing.JButton searchjButton1;
+    private javax.swing.JButton searchjButton;
     private javax.swing.JButton statButton;
     private javax.swing.JLabel uNamejLabel;
     private javax.swing.JLabel uNamejLabel1;
@@ -727,9 +722,12 @@ public class HomeScreen extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void populateComboBoxes() {
+
         try {
-            for (String user : dbManager.getAllUsers()) {
-                if (user != null) { // Ensure the username is not null
+            String[] userArray = dbManager.getAllUsers();
+            for (int i = 0; i < userArray.length; i++) {
+                String user = userArray[i];
+                if (user!=null) {
                     jComboBoxP1.addItem(user);
                     jComboBoxP2.addItem(user);
                     jComboBoxP3.addItem(user);
@@ -737,8 +735,10 @@ public class HomeScreen extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Failed to connect to the DB");
+            JOptionPane.showMessageDialog(null, "Could not connect to the DB");
+
         }
+
     }
 
     //changes the order the leaders are displayed in

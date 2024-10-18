@@ -172,6 +172,7 @@ public class Game {
 
     // Starts a new round
     public void newRound() {
+        handsPlayedInRound=0;
         deck.reset();
         deck.shuffle();
         for (int i = Player.PLAYER1; i <= Player.PLAYER4; i++) {
@@ -202,14 +203,18 @@ public class Game {
     public Player getTrumpPlayer() {
         Player trumpingPlayer = null;
         switch (initiatingPlayerOfRound.getID()) {
-            case Player.PLAYER1 ->
+            case Player.PLAYER1:
                 trumpingPlayer = players[Player.PLAYER4];
-            case Player.PLAYER2 ->
+                break;
+            case Player.PLAYER2:
                 trumpingPlayer = players[Player.PLAYER1];
-            case Player.PLAYER3 ->
+                break;
+            case Player.PLAYER3:
                 trumpingPlayer = players[Player.PLAYER2];
-            case Player.PLAYER4 ->
+                break;
+            case Player.PLAYER4:
                 trumpingPlayer = players[Player.PLAYER3];
+                break;
         }
         return trumpingPlayer;
     }
@@ -222,22 +227,22 @@ public class Game {
     // Determines the winner of the round and awards a ball
     public int deterimineRoundWinner() {
         int winningTeam = TEAM1;
-        // If Team 1 is counting
-        if (initiatingPlayerOfRound.getID() % 2 == TEAM1) {
-            if (t1Points < 105) {
-                t2Balls++;
-                winningTeam = TEAM2;
-            } else {
-                t1Balls++;
-            }
+        if (initiatingPlayerOfRound.getID()==Player.PLAYER2||initiatingPlayerOfRound.getID()==Player.PLAYER4) {
             // If Team 2 is counting
-        } else {
-            if (t2Points > 120) {
+            if (t2Points <105) {
                 t1Balls++;
                 winningTeam = TEAM1;
             } else {
                 t2Balls++;
                 winningTeam = TEAM2;
+            }
+        } else {
+            // If Team 1 is counting
+            if (t1Points < 105) {
+                t2Balls++;
+                winningTeam = TEAM2;
+            } else {
+                t1Balls++;
             }
         }
         return winningTeam;
@@ -277,7 +282,10 @@ public class Game {
 
     // Returns the number of balls won by each team
     public int[] getTeamsBalls() {
-        return new int[]{t1Balls, t2Balls};
+        int[]teamBalls=new int[2];
+        teamBalls[TEAM1-1]=t1Balls;
+        teamBalls[TEAM2-1]=t2Balls;
+        return teamBalls;
     }
 
     // Returns the number of balls won by each team

@@ -36,7 +36,6 @@ public class dbManager {
             Object[] row = {username, numGames, numWins, numLosses, tHands, wHands, tPoints,gamesTerminated};
             tableModel.addRow(row);
         }
-
         return tableModel;
     }
 
@@ -44,7 +43,6 @@ public class dbManager {
     public static String[] getAllUsers() throws SQLException {
         // SQL query to fetch users from the database 
         ResultSet rs = DB.read("SELECT username FROM thunee.tblplayers ORDER BY username;");
-
         String[] users = new String[999];
         int size = 0;
 
@@ -55,6 +53,7 @@ public class dbManager {
         }
 
         // Return the array of usernames
+
         return users;
     }
 
